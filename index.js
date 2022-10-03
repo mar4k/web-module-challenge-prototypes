@@ -15,9 +15,28 @@
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+class Person{
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(edible){
+    if(this.stomach.length < 10){
+      this.stomach.push(edible);
+    }
+  }
+  poop(){
+    this.stomach = [];
+  }
+  toString(){
+    return `${this.name}, ${this.age}`
+  }
 }
+
+// function Person() {
+
+// }
 
 
 /*
@@ -36,8 +55,27 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+class Car{
+  constructor(model, mpg){
+  this.model = model;
+  this.milesPerGallon = mpg;
+  this.tank = 0;
+  this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank = this.tank + gallons
+  }
+  drive(dist){
+    const drivableMiles = this.tank * this.milePerGallon
+    if(dist < this.drivablemiles){
+      this.odometer = this.odomter + distance;
+      this.tank = this.tank - (distance / this.milesPerGallon);
+    } else {
+      this.odometer = this.odometer + drivableMiles;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
+  }
 }
 
 
@@ -49,18 +87,35 @@ function Car() {
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby() {
 
+
+
+class Baby extends Person{
+  constructor(name, age, favoriteToy){
+  super();
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
+  }
+  play(favoriteToy){
+    console.log(`Playing with ${favoriteToy}`)
+  };
 }
+
+
+
+
 
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  
+  The four this principles are the four things this can represent in javascript code. It can stand for:
+  1. The global object i.e. javascript itself
+  2. the object before the dot when a function is called in conjuntion with an object
+  3. the relevant object created, if "this" is used in a creator function
+  4. when using .apply or .call to call a constructor function on [a] constructor object[s]
 */
 
 ///////// END OF CHALLENGE /////////
