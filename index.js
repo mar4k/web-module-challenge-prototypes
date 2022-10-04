@@ -15,29 +15,43 @@
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-class Person{
-  constructor(name, age){
-    this.name = name;
-    this.age = age;
-    this.stomach = [];
-  }
-  eat(edible){
-    if(this.stomach.length < 10){
-      this.stomach.push(edible);
-    }
-  }
-  poop(){
-    this.stomach = [];
-  }
-  toString(){
-    return `${this.name}, ${this.age}`
+// class Person{
+//   constructor(name, age){
+//     this.name = name;
+//     this.age = age;
+//     this.stomach = [];
+//   }
+//   eat(edible){
+//     if(this.stomach.length < 10){
+//       this.stomach.push(edible);
+//     }
+//   }
+//   poop(){
+//     this.stomach = [];
+//   }
+//   toString(){
+//     return `${this.name}, ${this.age}`
+//   }
+// }
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+
+Person.prototype.eat = function(edible){
+  if(this.stomach.length < 10){
+    this.stomach.push(edible)
   }
 }
 
-// function Person() {
-
-// }
-
+Person.prototype.poop = function(edible){
+  this.stomach = [];
+}
+Person.prototype.toString = function(name, age){
+  return (`${this.name}, ${this.age}`)
+}
 
 /*
   TASK 2
@@ -55,28 +69,67 @@ class Person{
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-class Car{
-  constructor(model, mpg){
+function Car(model, milesPerGallon){
   this.model = model;
-  this.milesPerGallon = mpg;
+  this.milesPerGallon = milesPerGallon;
   this.tank = 0;
   this.odometer = 0;
-  }
-  fill(gallons){
-    this.tank = this.tank + gallons
-  }
-  drive(dist){
-    const drivableMiles = this.tank * this.milePerGallon
-    if(dist < this.drivablemiles){
-      this.odometer = this.odomter + distance;
-      this.tank = this.tank - (distance / this.milesPerGallon);
-    } else {
-      this.odometer = this.odometer + drivableMiles;
-      this.tank = 0;
-      return `I ran out of fuel at ${this.odometer} miles!`
-    }
-  }
 }
+
+Car.prototype.fill = function(gallons){
+  this.tank = this.tank + gallons
+}
+
+Car.prototype.drive = function(distance){
+  this.odometer = this.odometer + distance
+  this.tank = this.tank - (distance / this.milesPerGallon)
+  return (`I ran out of fuel at ${this.odometer} miles!`)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class Car{
+//   constructor(model, mpg){
+//   this.model = model;
+//   this.milesPerGallon = mpg;
+//   this.tank = 0;
+//   this.odometer = 0;
+//   }
+//   fill(gallons){
+//     this.tank = this.tank + gallons
+//   }
+//   drive(dist){
+//     const drivableMiles = this.tank * this.milePerGallon
+//     if(dist < this.drivablemiles){
+//       this.odometer = this.odomter + distance;
+//       this.tank = this.tank - (distance / this.milesPerGallon);
+//     } else {
+//       this.odometer = this.odometer + drivableMiles;
+//       this.tank = 0;
+//       return `I ran out of fuel at ${this.odometer} miles!`
+//     }
+//   }
+// }
 
 
 /*
@@ -97,11 +150,14 @@ class Baby extends Person{
   this.age = age;
   this.favoriteToy = favoriteToy;
   }
-  play(favoriteToy){
-    console.log(`Playing with ${favoriteToy}`)
-  };
+  // play(favoriteToy){
+  //   return (`Playing with ${favoriteToy}`)
+  // };
 }
 
+Baby.prototype.play = function(){
+  return (`Playing with ${this.favoriteToy}`)
+}
 
 
 
